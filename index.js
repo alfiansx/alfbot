@@ -163,10 +163,6 @@ else if (text == 'BRO')
 {
 conn.sendMessage(id, tambahan.bro ,MessageType.text);
 }
-else if (text == 'WISNU')
-{
-  conn.sendMessage(id, tambahan.wis ,MessageType.text);
-}
 else if (text == 'TEST')
 {
   conn.sendMessage(id, tambahan.test, MessageType.text);
