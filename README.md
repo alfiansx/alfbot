@@ -1,6 +1,11 @@
 ## BETA-BOT
 BOT WHATSAPP YANG BISA DIGUNAKAN DI TERMUX
-<img src = "https://i.pinimg.com//originals//f6//dc//a0//f6dca0d9666923690c8ad3d53e9f005e.jpg" width="350">
+
+
+<img src = "https://i.pinimg.com//originals//f6//dc//a0//f6dca0d9666923690c8ad3d53e9f005e.jpg" width="320">
+
+
+
 
 ## CARA INSTALL
 # TERMUX
