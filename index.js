@@ -235,7 +235,7 @@ axios.get(`https://mhankbarbar.herokuapp.com/api/twit?url=${teks}&apiKey=zFuV88p
 
 if (text.includes("!wikia")){
 const teks = text.replace(/!wikia /, "")
-axios.get(`https://mhankbarbar.herokuapp.com/api/wiki?q=${teks}&lang=id&apiKey=zFuV88pxcIiCWuYlwg57`).then((res) => {
+axios.get(`https://st4rz.herokuapp.com/api/wiki?q=${text}`).then((res) => {
     let hasil = `Menurut Wikipedia:\n\n${res.data.result}`;
     conn.sendMessage(id, hasil ,MessageType.text);
 })
