@@ -16,8 +16,8 @@ BOT WHATSAPP YANG BISA DIGUNAKAN DI TERMUX
 > pkg install ffmpeg
 > pkg install nodejs
 > apt update && apt upgrade
-> git clone https://github.com/re-Destro/BETA-BOT
-> cd BETA-BOT
+> git clone https://github.com/alfiansx/alfbot
+> cd alfbot
 > bash install.sh
 > node index.js
 ```
@@ -52,4 +52,4 @@ ket : ✅ : aktif
 * [`termux-whatsapp-bot`](https://github.com/fdciabdul/termux-whatsapp-bot)
 * [`botst4rz`](https://github.com/Bintang73/botst4rz)
 ## DONASI
-* [`Saweria`](https://saweria.co/Mwmaulana310)
+* [`Saweria`](https://saweria.com/aditiaalfians)
