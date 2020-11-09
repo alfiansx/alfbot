@@ -1,8 +1,8 @@
-## BETA-BOT
+## Alf Bot
 BOT WHATSAPP YANG BISA DIGUNAKAN DI TERMUX
 
 
-<img src = "https://i.pinimg.com//originals//f6//dc//a0//f6dca0d9666923690c8ad3d53e9f005e.jpg" width="320">
+<img src = "https://i.ibb.co/jD65tdm/62-812-1347-7896-20201109-230938.jpg" width="320">
 
 
 
