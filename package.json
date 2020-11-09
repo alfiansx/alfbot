@@ -1,7 +1,7 @@
 {
-  "name": "BetaBOT",
+  "name": "ALFBOT",
   "version": "1.0.0",
-  "description": "bot wa yang mudah untuk digunakan",
+  "description": "bot termux",
   "main": "index.js",
   "directories": {
     "lib": "lib"
@@ -34,7 +34,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/re-Destro/BETA-BOT"
+    "url": "git+https://github.com/alfiansx/alfbot"
   },
   "keywords": [
     "k"
@@ -42,7 +42,7 @@
   "author": "Abdul Muttaqin",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/re-Destro/BETA-BOT/issues"
+    "url": "https://github.com/alfiansx/alfbot/issues"
   },
-  "homepage": "https://github.com/re-Destro/BETA-BOT#readme"
+  "homepage": "https://github.com/alfiansx/alfbot#readme"
 }
