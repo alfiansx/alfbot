@@ -34,6 +34,9 @@ const
 } = require("@adiwajshing/baileys");
 var jam = moment().format("HH:mm");
 
+// OCR Library
+const readTextInImage = require('./lib/ocr')
+
 function foreach(arr, func)
 {
    for (var i in arr)
@@ -376,6 +379,25 @@ conn.sendMessage(id, info.info(id, BotName, corohelp, tampilTanggal, tampilWaktu
 else if (text == '!pict'){
 conn.sendMessage(id, 'ulangi dengan  !pict cewek/cowok\n\nMisal: !pict cowok' ,MessageType.text);
 }
+
+  // Optical Character Recognition
+  if (messageType == 'imageMessage')
+   {
+       let caption = imageMessage.caption.toLocaleLowerCase()
+       if (caption == '!ocr')
+       {
+           const img = await conn.downloadAndSaveMediaMessage(m)
+           readTextInImage(img)
+               .then(data => {
+                   console.log(data)
+                   conn.sendMessage(id, `*Read Data Text in Image* \n\nHasil: \n\n${data}`, MessageT>
+               })
+               .catch(err => {
+                   console.log(err)
+               })
+       }
+   }
+
    if (messageType == 'imageMessage')
    {
       let caption = imageMessage.caption.toLocaleLowerCase()
