@@ -390,7 +390,7 @@ conn.sendMessage(id, 'ulangi dengan  !pict cewek/cowok\n\nMisal: !pict cowok' ,M
            readTextInImage(img)
                .then(data => {
                    console.log(data)
-                   conn.sendMessage(id, `*Read Data Text in Image* \n\nHasil: \n\n${data}`, MessageT>
+                   conn.sendMessage(id, `*Read Data Text in Image* \n\nHasil: \n\n${data}`, MessageType.text);
                })
                .catch(err => {
                    console.log(err)
