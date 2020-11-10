@@ -31,7 +31,8 @@ BOT WHATSAPP YANG BISA DIGUNAKAN DI TERMUX
 |       ✅       |    PANTUN                         |
 |       ✅       | ANIMEPICT                         |
 |       ✅       | STICKER                           |
-|       ✅       | NULIS                             |
+|       ✅       | NULIS 
+|       ✅       | OCR                               |
 |       ✅       | QUOTES                            |
 |       ✅       | RANDOM PICT                       |
 |       ✅       | ANIMEPICT                         |
@@ -52,6 +53,7 @@ ket : ✅ : aktif
 ## THANKS TO
 * [`termux-whatsapp-bot`](https://github.com/fdciabdul/termux-whatsapp-bot)
 * [`botst4rz`](https://github.com/Bintang73/botst4rz)
+* [`ibnusyawall`](https://github.com/ibnusyawall)
 * [`re-Destro`](https://github.com/re-Destro/BETA-BOT)
 ## DONASI
 * [`Saweria`](https://saweria.com/aditiaalfians)
