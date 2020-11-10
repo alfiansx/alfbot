@@ -19,6 +19,7 @@ BOT WHATSAPP YANG BISA DIGUNAKAN DI TERMUX
 > git clone https://github.com/alfiansx/alfbot
 > cd alfbot
 > bash install.sh
+> npm i node-tesseract-ocr
 > npm i
 > node index.js
 ```
