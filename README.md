@@ -39,14 +39,13 @@ BOT WHATSAPP YANG BISA DIGUNAKAN DI TERMUX
 |       ✅       | ANIMEPICT                         |
 |       ✅       | LIRIK                             |
 |       ✅       | ALAY                              |
-|       ✅       | YT,YTMP3,IG,TWT DOWNLOADER        |
+|       ✅       | YT,YTMP3,TWT,TIK TOK DOWNLOADER   |
 |       ✅       | WIKIPEDIA                         |
 |       ✅       | ARTI NAMA                         |
 |       ✅       | SHOLAT                            |
 |       ✅       | QURAN                             |
-|       ✅       | KAMING SUN                        |
 
-ket : ✅ : aktif
+✅ aktif
 
 
 
@@ -55,6 +54,5 @@ ket : ✅ : aktif
 * [`termux-whatsapp-bot`](https://github.com/fdciabdul/termux-whatsapp-bot)
 * [`botst4rz`](https://github.com/Bintang73/botst4rz)
 * [`ibnusyawall`](https://github.com/ibnusyawall)
-* [`re-Destro`](https://github.com/re-Destro/BETA-BOT)
 ## DONASI
 * [`Saweria`](https://saweria.com/aditiaalfians)
