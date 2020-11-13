@@ -187,17 +187,25 @@ console.log(exists);
 conn.sendMessage(id ,`nomor hp ${gg} ${exists ? " tersedia " : " tidak tersedia"} di whatsapp`, MessageType.text)
 }
 
+
+//UPDATE By: https://github.com/bangandre
+if (text.includes('!nulis')){
+  var teks = text.replace(/!nulis /, '')
+    axios.get('https://bangandre.herokuapp.com/nulis?teks='+teks)
+    .then((res) => {
+      imageToBase64(res.data.url)
+        .then(
+          (ress) => {
+            var buf = Buffer.from(ress, 'base64')
+            conn.sendMessage(id, buf, MessageType.image)
+        })
+    })
+}
+
+
 if (text.includes("!say")){
   const teks = text.replace(/!say /, "")
 conn.sendMessage(id, teks, MessageType.text)
-}
-
-if (text.includes("!nulis")){
-  const teks = text.replace(/!nulis /, "")
-axios.get(`https://mhankbarbar.herokuapp.com/nulis?text=${teks}&apiKey=zFuV88pxcIiCWuYlwg57`).then((res) => {
-    let hasil = `Silahkan download hasil dibawah ini agar hasilnya lebih bagus! ðŸ‘Œ\n\n${res.data.result}`;
-    conn.sendMessage(id, hasil ,MessageType.text);
-})
 }
 
 if (text.includes("!ytmp3")){
