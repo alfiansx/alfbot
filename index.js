@@ -14,7 +14,6 @@ const fetch = require('node-fetch');
 const urlencode = require("urlencode");
 const axios = require("axios");
 const menu = require("./lib/menu.js");
-const tambahan = require("./lib/tambahan.js")
 const donasi = require("./lib/donasi.js");
 const info = require("./lib/info.js");
 /////////////////
@@ -88,105 +87,7 @@ conn.on('message-new', async(m) =>
    console.log(`[ ${moment().format("HH:mm:ss")} ] => Nomor: [ ${id.split("@s.whatsapp.net")[0]} ] => ${text}`);
 
 
-// Groups
-
-if (text.includes("!buatgrup"))
-   {
-var nama = text.split("!buatgrup")[1].split("-nomor")[0];
-var nom = text.split("-nomor")[1];
-var numArray = nom.split(",");
-for ( var i = 0; i < numArray.length; i++ ) {
-    numArray[i] = numArray[i] +"@s.whatsapp.net";
-}
-var str = numArray.join("");
-console.log(str)
-const group = await conn.groupCreate (nama, str)
-console.log ("Grup telah dibuat dengan id: " + group.gid)
-conn.sendMessage(group.gid, "Halo semua!!!", MessageType.extendedText) // say hello to everyone on the group
-
-}
-//chat
-if (text == 'halo')
-{
-conn.sendMessage(id, tambahan.halo ,MessageType.text);
-}
-else if (text == 'hai')
-{
-conn.sendMessage(id, tambahan.hai ,MessageType.text);
-}
-else if (text == 'assalamualaikum')
-{
-conn.sendMessage(id, tambahan.ass ,MessageType.text);
-}
-else if (text == 'bro')
-{
-conn.sendMessage(id, tambahan.bro ,MessageType.text);
-}
-else if (text == 'p')
-{
-conn.sendMessage(id, tambahan.p ,MessageType.text);
-}
-else if (text == 'test')
-{
-  conn.sendMessage(id, tambahan.test, MessageType.text);
-}
-else if (text == 'HALO')
-{
-conn.sendMessage(id, tambahan.halo ,MessageType.text);
-}
-else if (text == 'Halo')
-{
-conn.sendMessage(id, tambahan.halo ,MessageType.text);
-}
-else if (text == 'Hai')
-{
-conn.sendMessage(id, tambahan.hai ,MessageType.text);
-}
-else if (text == 'Assalamualaikum')
-{
-conn.sendMessage(id, tambahan.ass ,MessageType.text);
-}
-else if (text == 'Bro')
-{
-conn.sendMessage(id, tambahan.bro ,MessageType.text);
-}
-else if (text == 'P')
-{
-conn.sendMessage(id, tambahan.p ,MessageType.text);
-}
-else if (text == 'Test')
-{
-  conn.sendMessage(id, tambahan.test, MessageType.text);
-}
-else if (text == 'HAI')
-{
-conn.sendMessage(id, tambahan.hai ,MessageType.text);
-}
-else if (text == 'ASSALAMUALAIKUM')
-{
-conn.sendMessage(id, tambahan.ass ,MessageType.text);
-}
-else if (text == 'BRO')
-{
-conn.sendMessage(id, tambahan.bro ,MessageType.text);
-}
-else if (text == 'TEST')
-{
-  conn.sendMessage(id, tambahan.test, MessageType.text);
-}
 // Fitur
-if(text.includes("!cek")){
-var num = text.replace(/!cek/ , "")
-var idn = num.replace("0","+62");
-
-console.log(id);
-const gg = idn
-
-const exists = await conn.isOnWhatsApp (gg)
-console.log(exists);
-conn.sendMessage(id ,`nomor hp ${gg} ${exists ? " tersedia " : " tidak tersedia"} di whatsapp`, MessageType.text)
-}
-
 
 if (text.includes('!nulis')){
   var teks = text.replace(/!nulis /, '')
@@ -195,7 +96,7 @@ if (text.includes('!nulis')){
       imageToBase64(res.data.result)
         .then(
           (ress) => {
-            conn.sendMessage(id, 'Permintaan Sedang Di Proses, Silahkan Tunggu...', MessageType.text)
+            conn.sendMessage(id, '[ WAIT ] Sedang di proses⏳ silahkan tunggu sebentar', MessageType.text)
             var buf = Buffer.from(ress, 'base64')
             conn.sendMessage(id, buf, MessageType.image)
         })
@@ -211,7 +112,8 @@ conn.sendMessage(id, teks, MessageType.text)
 if (text.includes("!ytmp3")){
 const teks = text.replace(/!ytmp3 /, "")
 axios.get(`https://alfians-api.herokuapp.com/api/yta?url=${teks}`).then((res) => {
-    let hasil = `✅Lagu Berhasil Di Download, silahkan klik link dan download hasilnya\nKlik link dibawah😉👇👇\n\nJudul: ${res.data.title}\n\nUkuran audio: ${res.data.filesize}\n\nLink: ${res.data.result}`;
+	conn.sendMessage(id, '[ WAIT ] Sedang di proses⏳ silahkan tunggu sebentar', MessageType.text)
+    let hasil = `✅Lagu Berhasil Di Download, silahkan klik link dan download hasilnya\nKlik link dibawah🗡️\n\nJudul: ${res.data.title}\n\nUkuran audio: ${res.data.filesize}\n\nLink: ${res.data.result}`;
     conn.sendMessage(id, hasil ,MessageType.text);
 })
 }
@@ -219,7 +121,8 @@ axios.get(`https://alfians-api.herokuapp.com/api/yta?url=${teks}`).then((res) =>
 if (text.includes("!ytmp4")){
 const teks = text.replace(/!ytmp4 /, "")
 axios.get(`https://alfians-api.herokuapp.com/api/ytv?url=${teks}`).then((res) => {
-    let hasil = `✅Video Berhasil Di Download, silahkan klik link dan download hasilnya\nKlik link dibawah😉👇👇\n\nJudul: ${res.data.title}\n\nUkuran video: ${res.data.filesize}\n\nLink: ${res.data.result}`;
+	conn.sendMessage(id, '[ WAIT ] Sedang di proses⏳ silahkan tunggu sebentar', MessageType.text)
+    let hasil = `✅Video Berhasil Di Download, silahkan klik link dan download hasilnya\nKlik link dibawah🗡️\n\nJudul: ${res.data.title}\n\nUkuran video: ${res.data.filesize}\n\nLink: ${res.data.result}`;
     conn.sendMessage(id, hasil ,MessageType.text);
 })
 }
@@ -227,7 +130,8 @@ axios.get(`https://alfians-api.herokuapp.com/api/ytv?url=${teks}`).then((res) =>
 if (text.includes("!twt")){
 const teks = text.replace(/!twt /, "")
 axios.get(`https://mhankbarbar.herokuapp.com/api/twit?url=${teks}&apiKey=zFuV88pxcIiCWuYlwg57`).then((res) => {
-    let hasil = `Berhasil! silahkan klik link di bawah untuk mendownload hasilnya!\nKlik link dibawah😉👇👇\n\nSize: ${res.data.filesize}\n\nLink: ${res.data.result}`;
+	conn.sendMessage(id, '[ WAIT ] Sedang di proses⏳ silahkan tunggu sebentar', MessageType.text)
+    let hasil = `✅Berhasil! silahkan klik link di bawah untuk mendownload hasilnya!\nKlik link dibawah🗡️\n\nSize: ${res.data.filesize}\n\nLink: ${res.data.result}`;
     conn.sendMessage(id, hasil ,MessageType.text);
 })
 }
@@ -235,7 +139,8 @@ axios.get(`https://mhankbarbar.herokuapp.com/api/twit?url=${teks}&apiKey=zFuV88p
 if (text.includes("!tiktok")) {
 const tictoc = text.replace(/!tiktok /, "")
 axios.get(`https://st4rz.herokuapp.com/api/tiktok?url=${tictoc}`).then((res) => {
-     let titoe = `Berhasil!!! Silahkan klik link dibawah ini untuk mendownload hasilnya! \nKlik link dibawah😉👇👇\n\nJudul: ${res.data.deskripsi} \n\nDurasi: ${res.data.durasi}\n\nNama: ${res.data.nama}\n\nUrl: ${res.data.urlvideo}`;
+	 conn.sendMessage(id, '[ WAIT ] Sedang di proses⏳ silahkan tunggu sebentar', MessageType.text)
+     let titoe = `✅Berhasil!!! Silahkan klik link dibawah ini untuk mendownload hasilnya! \nKlik link dibawah🗡️\n\nJudul: ${res.data.deskripsi} \n\nDurasi: ${res.data.durasi}\n\nNama: ${res.data.nama}\n\nUrl: ${res.data.urlvideo}`;
 conn.sendMessage(id, titoe, MessageType.text);
 })
 }
@@ -243,8 +148,8 @@ conn.sendMessage(id, titoe, MessageType.text);
 if (text.includes("!wiki")){
 const teks = text.replace(/!wiki /, "")
 axios.get(`https://st4rz.herokuapp.com/api/wiki?q=${teks}`).then((res) => {
-    let hasil = `Menurut Wikipedia:\n\n${res.data.result}`;
-    conn.sendMessage(id, 'Permintaan Sedang Di Proses, Silahkan Tunggu...', MessageType.text)
+	conn.sendMessage(id, '[ WAIT ] Sedang di proses⏳ silahkan tunggu sebentar', MessageType.text)
+    let hasil = `📝Menurut Wikipedia:\n\n${res.data.result}`;
     conn.sendMessage(id, hasil ,MessageType.text);
 })
 }
@@ -252,7 +157,8 @@ axios.get(`https://st4rz.herokuapp.com/api/wiki?q=${teks}`).then((res) => {
 if (text.includes("!sholat")){
   const teks = text.replace(/!sholat /, "")
   axios.get(`https://api.haipbis.xyz/jadwalsholat?daerah=${teks}`).then ((res) =>{
-  let hasil = `Jadwal sholat di ${teks} hari ini adalah\n\n📛Imsyak : ${res.data.Imsyak}\n📛Subuh : ${res.data.Subuh} WIB\n📛Dzuhur : ${res.data.Dzuhur}WIB\n📛Ashar : ${res.data.Ashar} WIB\n📛Maghrib : ${res.data.Maghrib}\n📛Isya : ${res.data.Isya} WIB\n📛Tengah malam : ${res.data.Dhuha} WIB`;
+  conn.sendMessage(id, '[ WAIT ] Sedang di proses⏳ silahkan tunggu sebentar', MessageType.text)
+  let hasil = `Jadwal sholat di ${teks} hari ini adalah\n\n⚡Imsyak : ${res.data.Imsyak}\n⚡Subuh : ${res.data.Subuh} WIB\n⚡Dzuhur : ${res.data.Dzuhur}WIB\n⚡Ashar : ${res.data.Ashar} WIB\n⚡Maghrib : ${res.data.Maghrib}\n⚡Isya : ${res.data.Isya} WIB\n⚡Tengah malam : ${res.data.Dhuha} WIB`;
   conn.sendMessage(id, hasil, MessageType.text);
 })
 }
@@ -448,7 +354,7 @@ const get = require('got')
     var meninggal = (body[0]['meninggal']);
     var dirawat = (body[0]['dirawat']);
     console.log(body[0]['name'])
-    conn.sendMessage(id,`🌀DATA WABAH COVID-19 TERBARU DI INDONESIA🌀\n\n🤒Positif ==> ${positif} \n😬Sembuh ==> ${sembuh} \n🤧Meninggal ==> ${meninggal}\n🤕Dirawat ==> ${dirawat}`, MessageType.text);
+    conn.sendMessage(id,`📌DATA WABAH COVID-19 TERBARU DI INDONESIA\n\n📍Positif ==> ${positif} \n📍Sembuh ==> ${sembuh} \n📍Meninggal ==> ${meninggal}\n📍Dirawat ==> ${dirawat}`, MessageType.text);
 }
    if (text.includes("!quotes"))
    {
@@ -463,9 +369,7 @@ const get = require('got')
             conn.sendMessage(
                id,
                `
-      Quotes untuk 
-*${id.split("@s.whatsapp.net")[0]}*
-     _${kata}_
+_${kata}_
         
     
 	*~${author}*
@@ -493,7 +397,6 @@ const get = require('got')
       console.log(""+ h);
       conn.sendMessage(id,
             `
-      Halo *${id.split("@s.whatsapp.net")[0]}*
       Arti dari namamu adalah
 
   ***********************************
@@ -549,6 +452,7 @@ const get = require('got')
         imageToBase64(cewek) // Path to the image
         .then(
             (response) => {
+    conn.sendMessage(id, '[ WAIT ] Sedang di proses⏳ silahkan tunggu sebentar', MessageType.text)
 	var buf = Buffer.from(response, 'base64'); // Ta-da	
               conn.sendMessage(
             id,
@@ -578,6 +482,7 @@ const get = require('got')
         imageToBase64(cowok) 
         .then(
             (response) => {
+  conn.sendMessage(id, '[ WAIT ] Sedang di proses⏳ silahkan tunggu sebentar', MessageType.text)
   var buf = Buffer.from(response, 'base64'); 
               conn.sendMessage(
             id,
@@ -607,6 +512,7 @@ if (text.includes("!animepict"))
         imageToBase64(nimek) 
         .then(
             (response) => {
+    conn.sendMessage(id, '[ WAIT ] Sedang di proses⏳ silahkan tunggu sebentar', MessageType.text)
 	var buf = Buffer.from(response, 'base64'); 
               conn.sendMessage(
             id,
@@ -622,37 +528,12 @@ if (text.includes("!animepict"))
     
     });
     }
- else if (text.includes("!ttsid")) {
-  var teks = text.split("!ttsid ")[1];
-  var path = require('path');
-  var text1 = teks.slice(6);
-  text1 = suara;
-  var suara = text.replace(/#ttsid/g, text1);
-  var filepath = 'mp3/bacot.wav';
-  
-  
-/*
- * save audio file
- */
-
-gtts.save(filepath, suara, function() {
-  console.log(`${filepath} MP3 SAVED!`)
-});
-await new Promise(resolve => setTimeout(resolve, 500));
-
-	if(suara.length > 200){ // check longness of text, because otherways google translate will give me a empty file
-  conn.sendMessage("Text kepanjangan bro!")
-}else{
-
-const buffer = fs.readFileSync(filepath)
-	conn.sendMessage(id , buffer , MessageType.audio);
-
-};
-}
+ 
 if (text.includes("!lirik")){
 	const teks = text.split("!lirik")[1]
 	axios.get(`http://scrap.terhambar.com/lirik?word=${teks}`).then ((res) => {
-	 	let hasil = `🧚‍♀️ lirik lagu 🧚‍♂️ ${teks} \n\n\n ${res.data.result.lirik}`
+	     conn.sendMessage(id, '[ WAIT ] Sedang di proses⏳ silahkan tunggu sebentar', MessageType.text)
+	 	let hasil = `📍lirik lagu📍${teks} \n\n\n ${res.data.result.lirik}`
 	conn.sendMessage(id, hasil, MessageType.text)
 	})
 }
