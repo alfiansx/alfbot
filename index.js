@@ -192,9 +192,10 @@ if (text.includes('!nulis')){
   var teks = text.replace(/!nulis /, '')
     axios.get('https://bangandre.herokuapp.com/nulis?teks='+teks)
     .then((res) => {
-      imageToBase64(res.data.url)
+      imageToBase64(res.data.result)
         .then(
           (ress) => {
+            conn.sendMessage(id, 'Permintaan Sedang Di Proses, Silahkan Tunggu...', MessageType.text)
             var buf = Buffer.from(ress, 'base64')
             conn.sendMessage(id, buf, MessageType.image)
         })
@@ -243,6 +244,7 @@ if (text.includes("!wiki")){
 const teks = text.replace(/!wiki /, "")
 axios.get(`https://st4rz.herokuapp.com/api/wiki?q=${teks}`).then((res) => {
     let hasil = `Menurut Wikipedia:\n\n${res.data.result}`;
+    conn.sendMessage(id, 'Permintaan Sedang Di Proses, Silahkan Tunggu...', MessageType.text)
     conn.sendMessage(id, hasil ,MessageType.text);
 })
 }
@@ -446,7 +448,7 @@ const get = require('got')
     var meninggal = (body[0]['meninggal']);
     var dirawat = (body[0]['dirawat']);
     console.log(body[0]['name'])
-    conn.sendMessage(id,`♻️’DATA WABAH COVID-19 TERBARU DI INDONESIA♻️\n\n👻Positif ==> ${positif} \n😁Sembuh ==> ${sembuh} \n🤧Meninggal ==> ${meninggal}\n😫’Dirawat ==> ${dirawat}`, MessageType.text);
+    conn.sendMessage(id,`🌀DATA WABAH COVID-19 TERBARU DI INDONESIA🌀\n\n🤒Positif ==> ${positif} \n😬Sembuh ==> ${sembuh} \n🤧Meninggal ==> ${meninggal}\n🤕Dirawat ==> ${dirawat}`, MessageType.text);
 }
    if (text.includes("!quotes"))
    {
@@ -650,7 +652,7 @@ const buffer = fs.readFileSync(filepath)
 if (text.includes("!lirik")){
 	const teks = text.split("!lirik")[1]
 	axios.get(`http://scrap.terhambar.com/lirik?word=${teks}`).then ((res) => {
-	 	let hasil = `♬lirik lagu♬ ${teks} \n\n\n ${res.data.result.lirik}`
+	 	let hasil = `🧚‍♀️ lirik lagu 🧚‍♂️ ${teks} \n\n\n ${res.data.result.lirik}`
 	conn.sendMessage(id, hasil, MessageType.text)
 	})
 }
