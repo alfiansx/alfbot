@@ -118,6 +118,15 @@ axios.get(`https://alfians-api.herokuapp.com/api/yta?url=${teks}`).then((res) =>
 })
 }
 
+if (text.includes("!igstalk")){
+  const teks = text.replace(/!igstalk /, "")
+  axios.get(`https://alfians-api.herokuapp.com/api/stalk?username=${teks}`).then ((res) =>{
+  conn.sendMessage(id, '[WAIT] Stalking...⏳', MessageType.text)
+  let hasil = `✨Biodata Instagram _${teks}_ \n\n 🧶 *Username* : _${res.data.Username}_ \n 🌀 *Nama* : _${res.data.Name}_ \n 🌟 *Jumlah Followers* : _${res.data.Jumlah_Followers}_ \n 🌠 *Jumlah_Following* : _${res.data.Jumlah_Following}_ \n ⭐ *Jumlah_Post* : _${res.data.Jumlah_Post}_ `;
+  conn.sendMessage(id, hasil, MessageType.text);
+})
+}
+
 if (text.includes("!ytmp4")){
 const teks = text.replace(/!ytmp4 /, "")
 axios.get(`https://alfians-api.herokuapp.com/api/ytv?url=${teks}`).then((res) => {
