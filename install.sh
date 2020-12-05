@@ -1,9 +1,17 @@
-apt update && apt upgrade
-pkg install wget
-pkg install ffmpeg
-pkg install nodejs
-npm i -g cwebp
-npm i -g ytdl 
+#!/data/data/com.termux/files/usr/bin/bash
+
+echo "\nInstallasi sedang berjalan ..."
+apt update
+
+echo "\nSedang menginstall package yang di butuhkan... mungkin membutuhkan waktu beberapa menit"
+apt install -y wget nodejs tesseract
+
+echo "\nMenginstall dependency package.json"
 npm i
-npm i got
-pkg install tesseract
+
+echo "\nSentuhan terakhir... harap bersabar"
+npm i -g cwebp
+
+echo "\nYeay semua sudah terinstall! ketik: node index.js untuk menjalankan bot!"
+
+exit
