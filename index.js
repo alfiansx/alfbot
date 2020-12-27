@@ -23,7 +23,7 @@ const loli = new lolis()
 const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
 const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))
 const samih = JSON.parse(fs.readFileSync('./src/simi.json'))
-prefix = '.'
+prefix = '!'
 blocked = []
 
 function kyun(seconds){
@@ -105,7 +105,6 @@ async function starts() {
 			const content = JSON.stringify(mek.message)
 			const from = mek.key.remoteJid
 			const type = Object.keys(mek.message)[0]
-			const apiKey = 'Your-Api-Key'
 			const { text, extendedText, contact, location, liveLocation, image, video, sticker, document, audio, product } = MessageType
 			const time = moment.tz('Asia/Jakarta').format('DD/MM HH:mm:ss')
 			body = (type === 'conversation' && mek.message.conversation.startsWith(prefix)) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption.startsWith(prefix) ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption.startsWith(prefix) ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text.startsWith(prefix) ? mek.message.extendedTextMessage.text : ''
@@ -131,7 +130,7 @@ async function starts() {
 			}
 
 			const botNumber = client.user.jid
-			const ownerNumber = ["6285892766102@s.whatsapp.net"] // replace this with your number
+			const ownerNumber = ["6285799496179@s.whatsapp.net"] // replace this with your number
 			const isGroup = from.endsWith('@g.us')
 			const sender = isGroup ? mek.participant : mek.key.remoteJid
 			const groupMetadata = isGroup ? await client.groupMetadata(from) : ''
@@ -303,7 +302,7 @@ async function starts() {
 						reply(`Kirim gambar dengan caption ${prefix}sticker atau tag gambar yang sudah dikirim`)
 					}
 					break
-				case 'gtts':
+				case 'tts':
 					if (args.length < 1) return client.sendMessage(from, 'Kode bahasanya mana om?', text, {quoted: mek})
 					const gtts = require('./lib/gtts')(args[0])
 					if (args.length < 2) return client.sendMessage(from, 'Textnya mana om', text, {quoted: mek})
@@ -322,43 +321,43 @@ async function starts() {
 						})
 					})
 					break
-				case 'meme':
+				/*case 'meme':
 					meme = await kagApi.memes()
 					buffer = await getBuffer(`https://imgur.com/${meme.hash}.jpg`)
 					client.sendMessage(from, buffer, image, {quoted: mek, caption: '.......'})
-					break
-				case 'memeindo':
+					break*/
+				/*case 'memeindo':
 					memein = await kagApi.memeindo()
 					buffer = await getBuffer(`https://imgur.com/${memein.hash}.jpg`)
 					client.sendMessage(from, buffer, image, {quoted: mek, caption: '.......'})
-					break
+					break*/
 				case 'setprefix':
 					if (args.length < 1) return
 					if (!isOwner) return reply(mess.only.ownerB)
 					prefix = args[0]
 					reply(`Prefix berhasil di ubah menjadi : ${prefix}`)
 					break
-				case 'loli':
+				/*case 'loli':
 					loli.getSFWLoli(async (err, res) => {
 						if (err) return reply('❌ *ERROR* ❌')
 						buffer = await getBuffer(res.url)
 						client.sendMessage(from, buffer, image, {quoted: mek, caption: 'Ingat! Citai Lolimu'})
 					})
 					break
-				case 'nsfwloli':
+				/*case 'nsfwloli':
 					if (!isNsfw) return reply('❌ *FALSE* ❌')
 					loli.getNSFWLoli(async (err, res) => {
 						if (err) return reply('❌ *ERROR* ❌')
 						buffer = await getBuffer(res.url)
 						client.sendMessage(from, buffer, image, {quoted: mek, caption: 'Jangan jadiin bahan buat comli om'})
 					})
-					break
+					break*/
 				case 'hilih':
 					if (args.length < 1) return reply('Teksnya mana um?')
 					anu = await fetchJson(`https://mhankbarbars.herokuapp.com/api/hilih?teks=${body.slice(7)}`, {method: 'get'})
 					reply(anu.result)
 					break
-				case 'yt2mp3':
+				case 'ytmp3':
 					if (args.length < 1) return reply('Urlnya mana um?')
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
 					anu = await fetchJson(`https://mhankbarbars.herokuapp.com/api/yta?url=${args[0]}&apiKey=${apiKey}`, {method: 'get'})
@@ -369,7 +368,7 @@ async function starts() {
 					buffer = await getBuffer(anu.result)
 					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
 					break
-				case 'ytsearch':
+				/*case 'ytsearch':
 					if (args.length < 1) return reply('Yang mau di cari apaan? titit?')
 					anu = await fetchJson(`https://mhankbarbars.herokuapp.com/api/ytsearch?q=${body.slice(10)}&apiKey=${apiKey}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
@@ -378,8 +377,8 @@ async function starts() {
 						teks += `*Title* : ${i.title}\n*Id* : ${i.id}\n*Published* : ${i.publishTime}\n*Duration* : ${i.duration}\n*Views* : ${h2k(i.views)}\n=================\n`
 					}
 					reply(teks.trim())
-					break
-				case 'tiktok':
+					break*/
+				/*case 'tiktok':
 					if (args.length < 1) return reply('Urlnya mana um?')
 					if (!isUrl(args[0]) && !args[0].includes('tiktok.com')) return reply(mess.error.Iv)
 					reply(mess.wait)
@@ -387,8 +386,8 @@ async function starts() {
 					if (anu.error) return reply(anu.error)
 					buffer = await getBuffer(anu.result)
 					client.sendMessage(from, buffer, video, {quoted: mek})
-					break
-				case 'tiktokstalk':
+					break*/
+				/*case 'tiktokstalk':
 					try {
 						if (args.length < 1) return client.sendMessage(from, 'Usernamenya mana um?', text, {quoted: mek})
 						let { user, stats } = await tiktod.getUserProfileInfo(args[0])
@@ -400,8 +399,8 @@ async function starts() {
 						console.log(`Error :`, color(e,'red'))
 						reply('Kemungkinan username tidak valid')
 					}
-					break
-				case 'nulis':
+					break*/
+				/*case 'nulis':
 				case 'tulis':
 					if (args.length < 1) return reply('Yang mau di tulis apaan?')
 					teks = body.slice(7)
@@ -410,8 +409,8 @@ async function starts() {
 					if (anu.error) return reply(anu.error)
 					buff = await getBuffer(anu.result)
 					client.sendMessage(from, buff, image, {quoted: mek, caption: mess.success})
-					break
-				case 'url2img':
+					break*/
+				/*case 'url2img':
 					tipelist = ['desktop','tablet','mobile']
 					if (args.length < 1) return reply('Tipenya apa um?')
 					if (!tipelist.includes(args[0])) return reply('Tipe desktop|tablet|mobile')
@@ -422,8 +421,8 @@ async function starts() {
 					if (anu.error) return reply(anu.error)
 					buff = await getBuffer(anu.result)
 					client.sendMessage(from, buff, image, {quoted: mek})
-					break
-				case 'tstiker':
+					break*/
+				/*case 'tstiker':
 				case 'tsticker':
 					if (args.length < 1) return reply('Textnya mana um?')
 					ranp = getRandom('.png')
@@ -438,7 +437,7 @@ async function starts() {
 						client.sendMessage(from, buffer, sticker, {quoted: mek})
 						fs.unlinkSync(rano)
 					})
-					break
+					break*/
 				case 'tagall':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
@@ -534,14 +533,14 @@ async function starts() {
 						fs.unlinkSync(ran)
 					})
 					break
-				case 'simi':
+				/*case 'simi':
 					if (args.length < 1) return reply('Textnya mana um?')
 					teks = body.slice(5)
 					anu = await simih(teks) //fetchJson(`https://mhankbarbars.herokuapp.com/api/samisami?text=${teks}`, {method: 'get'})
 					//if (anu.error) return reply('Simi ga tau kak')
 					reply(anu)
-					break
-				case 'simih':
+					break*/
+				/*case 'simih':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (args.length < 1) return reply('Hmmmm')
@@ -557,7 +556,7 @@ async function starts() {
 					} else {
 						reply('1 untuk mengaktifkan, 0 untuk menonaktifkan')
 					}
-					break
+					break*/
 				case 'welcome':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
